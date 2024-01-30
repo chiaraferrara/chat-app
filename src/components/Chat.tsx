@@ -1,11 +1,17 @@
 /** @format */
 
-import { ChatBox } from './ChatBox';
-import { useState } from 'react';
+import { ChatBox, MessageContainer } from './ChatBox';
+import { useState, useEffect } from 'react';
 import { Message, utilityGetLoggedEmail, utilityGetUserLogged } from '../utilities';
+import { Button, Textarea } from './Button';
 function Chat() {
   const [inputMessage, setInputMessage] = useState('');
   const [textmessage, setTextMessage] = useState<Message[]>([]);
+
+  useEffect(() => {
+    const storedMessages: Message[] = JSON.parse(localStorage.getItem('messages') || '[]');
+    setTextMessage(storedMessages);
+  }, []);
 
   const saveMessageToLocalStorage = () => {
     const messages: Message[] = JSON.parse(localStorage.getItem('messages') || '[]');
@@ -22,6 +28,13 @@ function Chat() {
   return (
     <>
       <ChatBox>
+      {textmessage.map((message, index) => (
+          <MessageContainer key={index} isMyMessage={message.author === utilityGetLoggedEmail()}>
+            <strong>{message.author}</strong>
+            <p>{message.text}</p>
+            <p>{message.date}</p>
+          </MessageContainer>
+        ))}
         <form
           name="sendMessageForm"
           action="#"
@@ -32,14 +45,16 @@ function Chat() {
           }}
         >
           <label className="item-input-wrapper">
-            <textarea
+            <Textarea
+            style={{ width: "300px", border: "transparent" }}
+            value={inputMessage}
               placeholder="Send a message..."
               onChange={event => setInputMessage(event.target.value)}
               required
-            ></textarea>
+            ></Textarea>
           </label>
           <div className="footer-btn-wrap">
-            <button type="submit">SEND</button>
+            <Button type="submit">SEND</Button>
           </div>
         </form>
       </ChatBox>

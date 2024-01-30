@@ -3,6 +3,8 @@
 import React from 'react';
 import { utilityClearEmail, utilityGetUserLogged } from '../utilities';
 import Chat from './Chat';
+import { Button } from './Button';
+import { Container } from './ChatBox';
 
 function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
   const email = localStorage.getItem('email');
@@ -14,7 +16,7 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
         <>
           <nav className="navbar bg-dark border-bottom border-body">
             {' '}
-            <button
+            <Button
               type="button"
               className="btn btn-dark"
               onClick={() => {
@@ -23,20 +25,19 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
               }}
             >
               Logout
-            </button>
+            </Button>
           </nav>
-          <div className="container">
+          <Container>
             <h2>
-              Bentornat* <br /> {email}
+              Welcome Back <br /> {email}
             </h2>
             <div>
-              Sei stato qui {currentUser.counter} volte
+              You've been here {currentUser.counter} times!
               <br />
-              <p>Ultimo accesso: {currentUser.previousAccess}</p> <br />
-              <p>Ultimissimo accesso: {currentUser.lastLogged}</p>
+              <p>Last seen: {currentUser.previousAccess}</p> <br />
             </div>
-          </div>
-          <Chat/>
+          </Container>
+          <Chat />
         </>
       );
     } else {
@@ -44,7 +45,7 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
         <>
           <nav className="navbar bg-dark border-bottom border-body">
             {' '}
-            <button
+            <Button
               type="button"
               className="btn btn-dark"
               onClick={() => {
@@ -53,16 +54,16 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
               }}
             >
               Logout
-            </button>
+            </Button>
           </nav>
-          <div className="container">
+          <Container>
             <h1>
-              Benvenut* <br /> {email}
+              Welcome <br /> {email}
             </h1>
-            <p>Primo accesso: {currentUser.lastLogged}</p> <br />
-          </div>
+            <p>First login: {currentUser.lastLogged}</p> <br />
+          </Container>
 
-          <Chat/>
+          <Chat />
         </>
       );
     }
