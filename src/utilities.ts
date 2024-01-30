@@ -13,6 +13,12 @@ export interface User {
   counter: number;
 }
 
+export interface Message {
+  author: string;
+  date: string;
+  text: string;
+}
+
 export const utilityGetUserLogged = (): User | undefined => {
   const emailLogged = utilityGetLoggedEmail();
   console.log('GetUserLogged by Email:' + emailLogged);

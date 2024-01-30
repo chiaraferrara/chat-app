@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { User, isUserLogged, utilityClearEmail, utilityGetLoggedEmail, utilityIsUserInLocalStorage } from './utilities';
 import Welcome from './components/Welcome';
 import LoginForm from './components/LoginForm';
+import './App.css';
 
 function App() {
   const [email, setEmail] = useState('');

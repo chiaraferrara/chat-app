@@ -3,6 +3,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { User, utilityGetLoggedEmail, utilityIsUserInLocalStorage } from '../utilities';
+import { Button } from './Button';
 
 function LoginForm({ onClickLogin }: { onClickLogin: () => void }) {
   const [email, setEmail] = useState('');
@@ -83,7 +84,7 @@ function LoginForm({ onClickLogin }: { onClickLogin: () => void }) {
     <>
       <nav className="navbar bg-dark border-bottom border-body">
         <a href="https://github.com/chiaraferrara">
-          <button className="btn btn-dark">GitHub</button>
+          <Button className="btn btn-dark">GitHub</Button>
         </a>
       </nav>
       <div className="App" style={{ width: 18 + 'rem', margin: 'auto', marginTop: '20px' }}>
@@ -110,9 +111,9 @@ function LoginForm({ onClickLogin }: { onClickLogin: () => void }) {
             // stato della mail aggiorna il valore così
             onChange={event => setEmail(event.target.value)}
           ></input>
-          <button className="btn btn-dark" type="submit" id="submitBtn"disabled onClick={onClickLogin}>
+          <Button className="btn btn-dark" type="submit" id="submitBtn"disabled onClick={onClickLogin}>
             Login
-          </button>
+          </Button>
         </form>
       </div>
     </>
