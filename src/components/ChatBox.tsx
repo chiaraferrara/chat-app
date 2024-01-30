@@ -31,7 +31,3 @@ export const MessageContainer = styled.div<{ isMyMessage: boolean }>(props => ({
 export const Wrapper = styled.div(() => ({
   background: '#fff',
 }));
-
-export const Wrapper = styled.div(() => ({
-  background: '#fff',
-}));
