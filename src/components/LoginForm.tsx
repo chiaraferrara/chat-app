@@ -4,13 +4,14 @@ import React from 'react';
 import { useState } from 'react';
 import { User, utilityGetLoggedEmail, utilityIsUserInLocalStorage } from '../utilities';
 
-function LoginForm() {
+function LoginForm({ onClickLogin }: { onClickLogin: () => void }) {
   const [email, setEmail] = useState('');
   const [users, setUsers] = useState<User[]>([]);
 
   const saveEmailtoCache = () => {
     localStorage.setItem(`email`, email);
   };
+
 
   const saveUserOnLocalStorage = () => {
     const prevUsers: User[] = JSON.parse(localStorage.getItem('users') || '[]');
@@ -96,6 +97,7 @@ function LoginForm() {
             checkEmail(formElement.email);
             saveEmailtoCache(); //saveEmail prima di route change per salvare nel local storage ma anche prima di login, così che possa trovare la mail nel local storage ed aggiornare!!!
             login();
+            onClickLogin();
           }}
         >
           <input
@@ -108,7 +110,7 @@ function LoginForm() {
             // stato della mail aggiorna il valore così
             onChange={event => setEmail(event.target.value)}
           ></input>
-          <button className="btn btn-dark" type="submit" id="submitBtn" disabled>
+          <button className="btn btn-dark" type="submit" id="submitBtn"disabled onClick={onClickLogin}>
             Login
           </button>
         </form>

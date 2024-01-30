@@ -1,9 +1,9 @@
 /** @format */
 
 import React from 'react';
-import { utilityGetUserLogged } from '../utilities';
+import { utilityClearEmail, utilityGetUserLogged } from '../utilities';
 
-function Welcome() {
+function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
   const email = localStorage.getItem('email');
 
   const currentUser = utilityGetUserLogged();
@@ -11,7 +11,19 @@ function Welcome() {
     if (currentUser.counter > 1) {
       return (
         <>
-          <nav className="navbar bg-dark border-bottom border-body">{/* <LogoutButton /> */}</nav>
+          <nav className="navbar bg-dark border-bottom border-body">
+            {' '}
+            <button
+              type="button"
+              className="btn btn-dark"
+              onClick={() => {
+                utilityClearEmail();
+                onClickLogout();
+              }}
+            >
+              Logout
+            </button>
+          </nav>
           <div className="container">
             <h2>
               Bentornat* <br /> {email}
@@ -28,7 +40,19 @@ function Welcome() {
     } else {
       return (
         <>
-          <nav className="navbar bg-dark border-bottom border-body">{/* <LogoutButton /> */}</nav>
+          <nav className="navbar bg-dark border-bottom border-body">
+            {' '}
+            <button
+              type="button"
+              className="btn btn-dark"
+              onClick={() => {
+                utilityClearEmail();
+                onClickLogout();
+              }}
+            >
+              Logout
+            </button>
+          </nav>
           <div className="container">
             <h1>
               Benvenut* <br /> {email}
