@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { utilityClearEmail, utilityGetUserLogged } from '../utilities';
+import Chat from './Chat';
 
 function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
   const email = localStorage.getItem('email');
@@ -35,6 +36,7 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
               <p>Ultimissimo accesso: {currentUser.lastLogged}</p>
             </div>
           </div>
+          <Chat/>
         </>
       );
     } else {
@@ -59,6 +61,8 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
             </h1>
             <p>Primo accesso: {currentUser.lastLogged}</p> <br />
           </div>
+
+          <Chat/>
         </>
       );
     }
