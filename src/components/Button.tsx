@@ -3,31 +3,37 @@
 import styled from '@emotion/styled';
 
 export const Button = styled.button(() => ({
-  backgroundColor: '#42a5f5',
+  backgroundColor: '#4395e3',
   color: '#fff',
-  margin: '2px',
+  margin: '0px',
   bottom: '5px',
-  borderRadius: '5px 0px 5px 0px',
+//   borderRadius: '5px 0px 5px 0px',
   cursor: 'pointer',
-  fontSize: '20px',
+  fontSize: '15px',
   border: '1px solid #ffffff',
 }));
 
 export const Textarea = styled.textarea(() => ({
-  backgroundColor: '#ffffff',
+  backgroundColor: 'transparent',
   color: '#000000',
   fontSize: '.9rem',
-  padding: '1rem',
   overflow: 'hidden',
   overflowY: 'auto',
   border: 'none',
   margin: '0',
   minHeight: '50px',
-  width: '100%',
-
+  minWidth: '300px',
   //questo per eliminare l'outline una volta cliccato sulla textarea
   outline: 'none',
   '&:focus': {
     border: 'none',
   },
+}));
+
+export const DeleteButton = styled.button(() => ({
+  backgroundColor: 'transparent',
+  color: '#fff',
+  padding: '0',
+  fontSize: '15px',
+  border: 'transparent',
 }));

@@ -15,7 +15,7 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
       return (
         <>
           <nav className="navbar bg-dark border-bottom border-body">
-            {' '}
+           
             <Button
               type="button"
               className="btn btn-dark"
@@ -28,9 +28,9 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
             </Button>
           </nav>
           <Container>
-            <h2>
-              Welcome Back <br /> {email}
-            </h2>
+            <div>
+              <strong>Welcome Back <br /> {email}</strong>
+            </div>
             <div>
               You've been here {currentUser.counter} times!
               <br />
@@ -44,8 +44,7 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
       return (
         <>
           <nav className="navbar bg-dark border-bottom border-body">
-            {' '}
-            <Button
+           <Button
               type="button"
               className="btn btn-dark"
               onClick={() => {
@@ -57,9 +56,9 @@ function Welcome({ onClickLogout }: { onClickLogout: () => void }) {
             </Button>
           </nav>
           <Container>
-            <h1>
-              Welcome <br /> {email}
-            </h1>
+            <p>
+              <strong>Welcome <br /> {email}</strong>
+            </p>
             <p>First login: {currentUser.lastLogged}</p> <br />
           </Container>
 

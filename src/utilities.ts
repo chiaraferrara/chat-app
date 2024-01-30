@@ -14,6 +14,7 @@ export interface User {
 }
 
 export interface Message {
+  id: number,
   author: string;
   date: string;
   text: string;
